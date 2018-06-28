@@ -1,4 +1,4 @@
-package com.co.ceiba.ParqueaderoCeibaLH;
+package co.com.ceiba.ParqueaderoCeibaLH;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
