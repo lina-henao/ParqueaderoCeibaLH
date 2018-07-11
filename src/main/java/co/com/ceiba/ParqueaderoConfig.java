@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 import co.com.ceiba.dominio.Parqueadero;
 
-
 @Configuration
 public class ParqueaderoConfig {
 	

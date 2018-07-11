@@ -48,7 +48,7 @@ public class RepositorioReciboPersistente implements IRepositorioRecibo {
 					reciboEntity.getFechaingreso(), reciboEntity.getFechasalida(), reciboEntity.getValor());
 
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			throw new ServicioParqueoException("el vehiculo no se encuentra ingresado");
 		}
 	}

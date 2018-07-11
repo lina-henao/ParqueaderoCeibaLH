@@ -8,7 +8,6 @@ import co.com.ceiba.persistencia.entidad.VehiculoEntity;
 
 public class ReciboBuilder {
 
-
 	public static ReciboParqueadero convertirADominioRecibo(ReciboEntity reciboEntity) {
 		ReciboParqueadero recibo = null;
 		if(reciboEntity != null){

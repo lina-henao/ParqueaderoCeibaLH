@@ -1,9 +1,15 @@
 package co.com.ceiba.dominio;
 
+
+
 public class Parqueadero {
 	
-	private int capacidadCarros;
-	private int capacidadMotos;
+	/**
+	 * 
+	 */
+	
+	private int capacidadCarros ;
+	private int capacidadMotos  ;
 	
 	
 	public int getCapacidadMoto() {
@@ -22,12 +28,13 @@ public class Parqueadero {
 		this.capacidadCarros = capacidadCarros;
 	}
 	
-	public Parqueadero(int capacidadCarros, int CapacidadMotos) {
+	public Parqueadero(int capacidadCarros, int capacidadMotos) {
 		super();
 		this.setCapacidadCarros(capacidadCarros);
-		this.capacidadMotos=CapacidadMotos;
-		
-		
+		this.setCapacidadMoto(capacidadMotos);
+			
 	}
 
+	
+	
 }

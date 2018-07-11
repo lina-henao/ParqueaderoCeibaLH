@@ -2,7 +2,6 @@ package co.com.ceiba.dominio;
 
 import java.util.Calendar;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class ReciboParqueadero {
 	private Vehiculo vehiculo;

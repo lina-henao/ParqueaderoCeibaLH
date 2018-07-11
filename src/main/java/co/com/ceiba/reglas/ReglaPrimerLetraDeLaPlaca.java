@@ -2,6 +2,7 @@ package co.com.ceiba.reglas;
 
 import java.util.Calendar;
 
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import co.com.ceiba.dominio.Parqueadero;
@@ -9,6 +10,7 @@ import co.com.ceiba.dominio.Vehiculo;
 import co.com.ceiba.excepcion.ServicioParqueoException;
 
 @Component
+@Order(value=3)
 public class ReglaPrimerLetraDeLaPlaca implements IReglasIngresoParqueadero {
 
 	@Override

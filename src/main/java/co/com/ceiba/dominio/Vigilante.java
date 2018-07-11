@@ -3,7 +3,7 @@ package co.com.ceiba.dominio;
 import java.util.Calendar;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
+
 import org.springframework.stereotype.Service;
 
 import co.com.ceiba.excepcion.ServicioParqueoException;
@@ -13,17 +13,16 @@ import co.com.ceiba.reglas.ReglaCobro;
 import co.com.ceiba.repositorio.IRepositorioRecibo;
 import co.com.ceiba.repositorio.IRepositorioVehiculo;
 
-
 @Service
 public class Vigilante {
 
 	private List<IReglasIngresoParqueadero> reglasingreso;
-			List<IReglasSalidaParqueadero> reglasSalida;
-	private Parqueadero parqueadero;
+	List<IReglasSalidaParqueadero> reglasSalida;
+ 	Parqueadero parqueadero;
 	IRepositorioRecibo repositorioRecibo;
 	IRepositorioVehiculo repositorioVehiculo;
 
-	@Autowired
+	
 	public Vigilante(List<IReglasIngresoParqueadero> reglasingreso, List<IReglasSalidaParqueadero> reglasSalida,
 			Parqueadero parqueadero, IRepositorioVehiculo repositorioVehiculo, IRepositorioRecibo repositorioRecibo) {
 		super();
@@ -31,20 +30,21 @@ public class Vigilante {
 		this.parqueadero = parqueadero;
 		this.repositorioVehiculo = repositorioVehiculo;
 		this.repositorioRecibo = repositorioRecibo;
-		this.reglasSalida =reglasSalida;
+		this.reglasSalida = reglasSalida;
 
 	}
 
 	public ReciboParqueadero ingresarUnVehiculo(Vehiculo vehiculo) {
-	 Calendar fechaactual = Calendar.getInstance();
-		validarReglaIngreso(vehiculo);
+		Calendar fechaactual = Calendar.getInstance();
+		validarReglaIngreso(vehiculo);		
+		vehiculo.setPlaca(vehiculo.getPlaca().toUpperCase());
 		insertarVehiculo(vehiculo);
 		ReciboParqueadero recibo = new ReciboParqueadero(vehiculo, fechaactual);
 		if (repositorioRecibo.obtenerVehiculoEnParqueaderoPorPlaca(vehiculo.getPlaca()) == null) {
 			repositorioRecibo.insertar(recibo);
 			return recibo;
-		} else
-			throw new ServicioParqueoException("El Vehiculo Ya Se Encuetra En El Parqueadero");
+		}
+		throw new ServicioParqueoException("El Vehículo ya se Encuetra En El Parqueadero");
 
 	}
 
@@ -55,13 +55,15 @@ public class Vigilante {
 	}
 
 	private void validarReglaIngreso(Vehiculo vehiculo) {
-		for (IReglasIngresoParqueadero regla : reglasingreso) {
+	for (IReglasIngresoParqueadero regla : reglasingreso) {
 			regla.validar(vehiculo, parqueadero);
+
 		}
 	}
-	
-	public ReciboParqueadero darSalidaVehiculo( Vehiculo vehiculo){
-		if(repositorioRecibo.obtenerVehiculoEnParqueaderoPorPlaca(vehiculo.getPlaca())!=null){
+
+	public ReciboParqueadero darSalidaVehiculo(Vehiculo vehiculo) {
+		vehiculo.setPlaca(vehiculo.getPlaca().toUpperCase());
+		if (repositorioRecibo.obtenerVehiculoEnParqueaderoPorPlaca(vehiculo.getPlaca()) != null) {
 			Calendar fechaSalida = Calendar.getInstance();
 			ReglaCobro reglaCobro = new ReglaCobro();
 			ReciboParqueadero recibo = repositorioRecibo.obtenerRecibo(vehiculo.getPlaca());
@@ -70,9 +72,7 @@ public class Vigilante {
 			repositorioRecibo.actualizarRecibo(recibo);
 			return recibo;
 		}
-		throw new ServicioParqueoException("El Vehiculo No Se Encuetra En El Parqueadero");
+		throw new ServicioParqueoException("El Vehículo NO se encuetra en el PARQUEADERO");
 	}
-	
 
-	
 }

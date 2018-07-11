@@ -1,6 +1,7 @@
 package co.com.ceiba.reglas;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import co.com.ceiba.dominio.Carro;
 import co.com.ceiba.dominio.Moto;
@@ -10,6 +11,7 @@ import co.com.ceiba.excepcion.ServicioParqueoException;
 import co.com.ceiba.repositorio.IRepositorioRecibo;
 
 @Component
+@Order(value=2)
 public class ReglaCapacidadDelParqueadero implements IReglasIngresoParqueadero {
 	
 	

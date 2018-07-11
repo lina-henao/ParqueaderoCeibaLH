@@ -5,6 +5,7 @@ import co.com.ceiba.dominio.Vehiculo;
 public class VehiculoTestDataBuilder {
 	
 	static private final String PLACA ="GMW303";
+	
 	String placa;
 	
 	public VehiculoTestDataBuilder() {

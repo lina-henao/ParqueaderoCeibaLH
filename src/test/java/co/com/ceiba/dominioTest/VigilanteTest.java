@@ -45,7 +45,7 @@ public class VigilanteTest {
 	
 	public void  ingresarMotoTest (){
 		//Arrange
-		vehiculo = new Moto ("GMW303", 500);
+		vehiculo = new Moto ("GMW30D", 501);
 		vigilante.ingresarUnVehiculo(vehiculo);
 		//Assert
 		Assert.assertNotNull(repositorioRecibo.obtenerPorPlaca(vehiculo.getPlaca()));
@@ -55,14 +55,14 @@ public class VigilanteTest {
 	@Test
 	   public void ingresarRetirarMoto(){
 		//Arrange
-		vehiculo = new Moto("GMW303",501);
+		vehiculo = new Moto("GMW30D",501);
 		vigilante.ingresarUnVehiculo(vehiculo);
 		ReciboParqueadero recibo = vigilante.darSalidaVehiculo(vehiculo);
 		//Assert
-		Assert.assertNotNull(recibo.getVehiculo().getPlaca(),"FCM30A");
+		Assert.assertNotNull(recibo.getVehiculo().getPlaca(),"GMW30D");
 	
 	}
-	
+	@Test
 	  public void ingresarRetirarCarro(){
 			//Arrange
 			vehiculo = new Carro("GMW303");
